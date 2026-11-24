@@ -1,5 +1,7 @@
 # Portfolio
 
+**Live at [d-sreevardhan.github.io](https://d-sreevardhan.github.io)**
+
 A static personal site for Sree Vardhan Desu. No build step, no dependencies, no framework —
 four files that a browser can open directly.
 
@@ -19,25 +21,36 @@ Open `index.html` in a browser, or serve it:
 cd portfolio && python3 -m http.server 8000
 ```
 
-## Deploy to GitHub Pages
+## Publishing updates
 
-Create a repository named `D-SreeVardhan.github.io` — for that exact name GitHub publishes at
-`https://d-sreevardhan.github.io` with no project path.
+This directory is a git repository published to GitHub Pages from
+[`D-SreeVardhan/D-SreeVardhan.github.io`](https://github.com/D-SreeVardhan/D-SreeVardhan.github.io),
+branch `main`, root folder. Because the repository is named `<username>.github.io`, it serves at
+the apex `d-sreevardhan.github.io` with no project path.
+
+To publish a change:
 
 ```bash
 cd portfolio
-git init -b main
-git add .
-git commit -m "feat: portfolio site"
-git remote add origin https://github.com/D-SreeVardhan/D-SreeVardhan.github.io.git
-git push -u origin main
+git add -A && git commit -m "update: <what changed>"
+git push
 ```
 
-Then in the repository, open Settings → Pages and set the source to deploy from the `main` branch,
-root folder. The first publish takes a minute or two.
+The rebuild takes under a minute. Check it from the command line:
 
-Any static host works the same way: Netlify, Vercel, and Cloudflare Pages will all serve this
-directory as-is with no build command.
+```bash
+gh api repos/D-SreeVardhan/D-SreeVardhan.github.io/pages/builds/latest --jq '{status, error: .error.message}'
+curl -sS -o /dev/null -w '%{http_code}\n' https://d-sreevardhan.github.io/
+```
+
+Pages serves static files only, which is why it is free with no sleep or cold starts — the usual
+catch with free dynamic hosting tiers. The trade-off is that there is no server-side code here,
+which this site does not need.
+
+### Custom domain
+
+If you buy a domain later, add a `CNAME` file containing the bare domain, point a DNS `ALIAS`
+or `A` record at GitHub's Pages IPs, and enable "Enforce HTTPS" in the repository settings.
 
 ## Design notes
 
