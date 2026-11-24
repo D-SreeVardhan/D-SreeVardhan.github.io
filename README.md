@@ -2,20 +2,32 @@
 
 **Live at [d-sreevardhan.github.io](https://d-sreevardhan.github.io)**
 
-A static personal site for Sree Vardhan Desu. No build step, no dependencies, no framework —
-four files that a browser can open directly.
+A static personal site for Sree Vardhan Desu. No build step, no dependencies, no framework.
 
 ```
 index.html     Content and structure
 styles.css     Design system and layout
-main.js        Progressive enhancement only (scroll reveal, active section)
+main.js        Active section highlight in the aside nav
 favicon.svg    Mark
-resume.pdf     Copy of the built résumé, linked from the page
+resume.pdf     Copy of the built résumé
 ```
 
-## Run it locally
+## Design
 
-Open `index.html` in a browser, or serve it:
+Hybrid of two patterns that show up on strong AI/ML portfolios:
+
+1. **Sticky left identity + scrolling content** — the scan layout popularised by
+   [Brittany Chiang](https://brittanychiang.com). Name, pitch, section nav, and
+   links stay put; About / Work / Research / Toolkit scroll on the right.
+2. **Outcome-first project cards** — the production-AI case-study shape used by
+   sites like [Leonardo Urena](https://www.leonardo-urena.com). Each project opens
+   with the result, then a metric strip, then numbered architecture steps, then
+   an honest limitation note.
+
+Kept oxblood (`#6e1b21`) and EB Garamond so the site still matches the printed
+résumé and does not read as a dark-teal Chiang clone.
+
+## Run locally
 
 ```bash
 cd portfolio && python3 -m http.server 8000
@@ -24,11 +36,7 @@ cd portfolio && python3 -m http.server 8000
 ## Publishing updates
 
 This directory is a git repository published to GitHub Pages from
-[`D-SreeVardhan/D-SreeVardhan.github.io`](https://github.com/D-SreeVardhan/D-SreeVardhan.github.io),
-branch `main`, root folder. Because the repository is named `<username>.github.io`, it serves at
-the apex `d-sreevardhan.github.io` with no project path.
-
-To publish a change:
+[`D-SreeVardhan/D-SreeVardhan.github.io`](https://github.com/D-SreeVardhan/D-SreeVardhan.github.io).
 
 ```bash
 cd portfolio
@@ -36,44 +44,14 @@ git add -A && git commit -m "update: <what changed>"
 git push
 ```
 
-The rebuild takes under a minute. Check it from the command line:
+Rebuild takes under a minute. Check status:
 
 ```bash
 gh api repos/D-SreeVardhan/D-SreeVardhan.github.io/pages/builds/latest --jq '{status, error: .error.message}'
 curl -sS -o /dev/null -w '%{http_code}\n' https://d-sreevardhan.github.io/
 ```
 
-Pages serves static files only, which is why it is free with no sleep or cold starts — the usual
-catch with free dynamic hosting tiers. The trade-off is that there is no server-side code here,
-which this site does not need.
-
-### Custom domain
-
-If you buy a domain later, add a `CNAME` file containing the bare domain, point a DNS `ALIAS`
-or `A` record at GitHub's Pages IPs, and enable "Enforce HTTPS" in the repository settings.
-
-## Design notes
-
-The site deliberately shares an identity with the printed résumé: EB Garamond, an oxblood accent
-(`#6e1b21`), and warm paper rather than white. It avoids the default tech-portfolio conventions —
-cool blues, gradient hero sections, glassmorphism, card grids — in favour of an editorial layout
-with a section index, numbered project entries, and a small hand-built diagram per project.
-
-Specifics worth preserving if you edit it:
-
-- **One accent, used sparingly.** Oxblood marks the name, section numbers, metrics, and links.
-  Adding a second accent colour would dilute it.
-- **Dark mode is a palette swap**, driven by `prefers-color-scheme` through CSS custom properties.
-  There is no toggle and no JavaScript involved.
-- **JavaScript is additive.** The reveal animation applies its hiding class from JavaScript, never
-  from the markup, so content can never end up permanently invisible if the script fails. Both
-  enhancements are skipped entirely under `prefers-reduced-motion`.
-- **Accessibility.** Semantic landmarks, a skip link, visible focus rings, and the section index
-  marked with `aria-current` as you scroll.
-
 ## Keeping the résumé in sync
-
-`resume.pdf` is a copy. After rebuilding the LaTeX résumé, refresh it:
 
 ```bash
 cp ../resume/resume.pdf resume.pdf

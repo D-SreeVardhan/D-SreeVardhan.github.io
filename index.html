@@ -4,421 +4,343 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sree Vardhan Desu — AI/ML Engineer</title>
-<meta name="description" content="AI/ML undergraduate at RV University and IEEE CONECCT 2026 author. Builds closed-loop molecular design systems, cross-lingual speech pipelines, and retrieval-grounded document intelligence.">
-
+<meta name="description" content="AI/ML undergraduate at RV University and IEEE CONECCT 2026 author. Closed-loop molecular design, cross-lingual speech, retrieval-grounded document intelligence.">
 <meta property="og:title" content="Sree Vardhan Desu — AI/ML Engineer">
 <meta property="og:description" content="Closed-loop molecular design, cross-lingual speech, retrieval-grounded document intelligence.">
 <meta property="og:type" content="website">
-
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#content">Skip to content</a>
 
-<!-- Left rail: section index, doubles as scroll progress on desktop. -->
-<nav class="rail" aria-label="Section index">
-  <p class="rail__name"><a href="#top">SVD</a></p>
-  <ol class="rail__list">
-    <li><a href="#work" data-rail>Work</a></li>
-    <li><a href="#research" data-rail>Research</a></li>
-    <li><a href="#approach" data-rail>Approach</a></li>
-    <li><a href="#toolkit" data-rail>Toolkit</a></li>
-    <li><a href="#contact" data-rail>Contact</a></li>
-  </ol>
-</nav>
+<div class="shell">
 
-<main id="main">
-
-<!-- ============ Masthead ============ -->
-<header class="masthead" id="top">
-  <p class="eyebrow">Bengaluru, India &middot; AI/ML Engineer</p>
-  <h1 class="masthead__name">Sree Vardhan<br>Desu</h1>
-  <p class="lede">
-    I build machine learning systems that have to <em>work</em> in front of someone — generator
-    and evaluator in a loop, speech crossing five languages, retrieval that can show its sources.
-    Final-year AI&nbsp;&amp;&nbsp;ML undergraduate at RV&nbsp;University and an
-    <a href="#research">IEEE&nbsp;CONECCT&nbsp;2026</a> author.
-  </p>
-  <ul class="masthead__links">
-    <li><a href="mailto:dsreevardhan22@gmail.com">dsreevardhan22@gmail.com</a></li>
-    <li><a href="https://github.com/D-SreeVardhan" rel="me noopener">GitHub</a></li>
-    <li><a href="https://linkedin.com/in/sree-vardhan-desu" rel="me noopener">LinkedIn</a></li>
-    <li><a href="resume.pdf">Résumé&nbsp;(PDF)</a></li>
-  </ul>
-</header>
-
-<!-- ============ Work ============ -->
-<section id="work" class="section" aria-labelledby="work-h">
-  <div class="section__label"><h2 id="work-h">Work</h2></div>
-
-  <div class="section__body">
-
-    <!-- ---- Project 01 ---- -->
-    <article class="project reveal">
-      <div class="project__head">
-        <p class="project__num">01</p>
-        <div>
-          <h3 class="project__title">SafeMolGen&#8209;DrugOracle</h3>
-          <p class="project__sub">Closed-loop drug-discovery pipeline</p>
-        </div>
-        <p class="project__period">Dec 2025 &ndash; Present</p>
-      </div>
-
-      <figure class="motif" aria-hidden="true">
-        <svg viewBox="0 0 220 90" role="presentation" focusable="false">
-          <g class="motif__edges">
-            <path d="M20 45 L55 25 M55 25 L90 45 M90 45 L55 65 M55 65 L20 45 M90 45 L125 25 M125 25 L160 45 M160 45 L125 65 M125 65 L90 45 M160 45 L195 30"/>
-          </g>
-          <g class="motif__nodes">
-            <circle cx="20" cy="45" r="4"/><circle cx="55" cy="25" r="4"/>
-            <circle cx="90" cy="45" r="4"/><circle cx="55" cy="65" r="4"/>
-            <circle cx="125" cy="25" r="4"/><circle cx="160" cy="45" r="4"/>
-            <circle cx="125" cy="65" r="4"/><circle cx="195" cy="30" r="5" class="is-flagged"/>
-          </g>
-        </svg>
-        <figcaption class="motif__cap">Molecular graph &mdash; the input representation for the ADMET predictor</figcaption>
-      </figure>
-
-      <p>
-        Most molecular generators optimise one surrogate score and hope the chemistry holds up.
-        SafeMolGen treats the problem as a loop instead: a Transformer proposes drug-like
-        molecules, an oracle estimates whether each would survive clinical trials, and the
-        oracle&rsquo;s verdict is fed back as a conditioning signal so the next round of proposals
-        is steered toward safer chemistry. Every iteration streams to the browser as it happens.
+  <!-- Sticky left: identity, nav, links. Pattern from Chiang-style portfolios;
+       the right column scrolls independently on desktop. -->
+  <aside class="aside" aria-label="Profile">
+    <div class="aside__top">
+      <p class="aside__role">AI/ML Engineer · Bengaluru</p>
+      <h1 class="aside__name"><a href="#top">Sree Vardhan Desu</a></h1>
+      <p class="aside__pitch">
+        I build machine learning systems that have to work in front of someone —
+        generator and evaluator in a loop, speech across five languages, retrieval
+        that can show its sources.
       </p>
-
-      <ol class="steps">
-        <li>
-          <strong>Predict.</strong> A three-layer Graph Isomorphism Network with attention pooling
-          reads the molecule as a graph and jointly predicts 22 ADMET endpoints from the
-          Therapeutics Data Commons benchmark group, spanning both regression and classification.
-        </li>
-        <li>
-          <strong>Judge.</strong> DrugOracle scores Phase&nbsp;I/II/III survival with
-          <em>cascaded</em> heads &mdash; Phase&nbsp;II consumes Phase&nbsp;I&rsquo;s output and
-          Phase&nbsp;III consumes both &mdash; because trials are sequential, not independent. A
-          SMARTS filter flags PAINS and known toxicophores alongside it.
-        </li>
-        <li>
-          <strong>Generate.</strong> A causal Transformer over a regex SMILES tokeniser that keeps
-          multi-character atoms and ring closures as single tokens, pretrained on 2.85M ChEMBL
-          molecules and conditioned on a 25-dimensional ADMET-plus-phase vector.
-        </li>
-        <li>
-          <strong>Refine.</strong> REINFORCE and PPO fine-tuning under a composite reward of
-          validity, drug-likeness, oracle score, and diversity &mdash; with the oracle term gated
-          on validity so invalid molecules can never accrue reward.
-        </li>
-      </ol>
-
-      <dl class="metrics">
-        <div><dt>Chemical validity</dt><dd>68.8<span>%</span></dd></div>
-        <div><dt>Uniqueness</dt><dd>100<span>%</span></dd></div>
-        <div><dt>Training corpus</dt><dd>2.85<span>M</span></dd></div>
-        <div><dt>ADMET endpoints</dt><dd>22</dd></div>
-      </dl>
-
-      <p class="note">
-        <strong>What I learned the hard way.</strong> The oracle&rsquo;s contribution to the reward
-        was an order of magnitude smaller than the validity term, so it barely registered. Scaling
-        it up to compensate collapsed validity to zero &mdash; the policy drifted clean off the
-        manifold of valid chemistry with nothing anchoring it back. The fix is a curriculum on the
-        oracle weight plus a divergence penalty against the pretrained policy, which is exactly the
-        shape of the problem RLHF solves in language models. Reward scaling is not a detail.
-      </p>
-
-      <ul class="stack">
-        <li>PyTorch</li><li>PyTorch Geometric</li><li>Transformers</li><li>RDKit</li>
-        <li>FastAPI</li><li>React</li><li>TypeScript</li>
-      </ul>
-      <p class="project__links">
-        <a href="https://github.com/D-SreeVardhan/SafeMolGen" rel="noopener">Source &rarr;</a>
-      </p>
-    </article>
-
-    <!-- ---- Project 02 ---- -->
-    <article class="project reveal">
-      <div class="project__head">
-        <p class="project__num">02</p>
-        <div>
-          <h3 class="project__title">Multilingual Voice Chatbot</h3>
-          <p class="project__sub">Cross-lingual speech-to-speech across five languages</p>
-        </div>
-        <p class="project__period">Dec 2025 &ndash; Apr 2026</p>
-      </div>
-
-      <figure class="motif" aria-hidden="true">
-        <svg viewBox="0 0 220 90" role="presentation" focusable="false">
-          <g class="motif__arcs">
-            <path d="M35 70 C 70 10, 150 10, 185 70"/>
-            <path d="M48 70 C 78 24, 142 24, 172 70"/>
-            <path d="M61 70 C 86 38, 134 38, 159 70"/>
-          </g>
-          <g class="motif__nodes">
-            <circle cx="35" cy="70" r="4"/><circle cx="185" cy="70" r="4"/>
-            <circle cx="110" cy="22" r="5" class="is-pivot"/>
-          </g>
-          <text class="motif__tx" x="110" y="86" text-anchor="middle">English pivot</text>
-        </svg>
-        <figcaption class="motif__cap">Every language pair routes through one strong answering stage</figcaption>
-      </figure>
-
-      <p>
-        Ask a question out loud in Hindi, Tamil, Telugu, Kannada, or English and get a spoken
-        answer back in whichever of those you choose. The interesting constraint is that the
-        answering model is far stronger in English than in any Indic language, so the system
-        pivots: translate in, answer once, translate out. One good reasoning stage serves all
-        <strong>25 input&ndash;output pairs</strong> instead of five weak ones.
-      </p>
-
-      <ol class="steps">
-        <li>
-          <strong>One source of truth for language.</strong> Speech recognition wants ISO codes,
-          translation wants FLORES codes, and the voice model is chosen per language. All three
-          read from a single mapping, so adding a sixth language is one configuration entry rather
-          than a change across five modules.
-        </li>
-        <li>
-          <strong>Memory in the pivot language.</strong> Conversation history is stored in English,
-          which is why context survives when someone asks their follow-up in a different language
-          from the original question.
-        </li>
-        <li>
-          <strong>Voices chosen for the language, not the stack.</strong> AI4Bharat&rsquo;s Indic
-          Parler-TTS handles Indic pronunciation and prosody; a Coqui VITS voice handles English.
-        </li>
-        <li>
-          <strong>Built to survive a live demo.</strong> Several gigabytes of weights stay resident
-          in a process-level cache across requests, each stage streams to the browser as it
-          completes, and every component has an explicit fallback for offline or missing-model
-          conditions.
-        </li>
-      </ol>
-
-      <dl class="metrics">
-        <div><dt>Languages</dt><dd>5</dd></div>
-        <div><dt>Language pairs</dt><dd>25</dd></div>
-        <div><dt>Answer relevance</dt><dd>~82<span>%</span></dd></div>
-        <div><dt>Dev-set queries</dt><dd>200</dd></div>
-      </dl>
-
-      <p class="note">
-        <strong>The trade-off worth naming.</strong> Pivoting twice means translation error
-        compounds, and code-mixed speech &mdash; which is how people actually talk in Bengaluru
-        &mdash; is the hardest input for both the recogniser and the translator. The honest
-        boundary of this system is monolingual utterances.
-      </p>
-
-      <ul class="stack">
-        <li>Whisper</li><li>NLLB-200</li><li>Hugging Face</li><li>fastText</li>
-        <li>Flask</li><li>Server-Sent Events</li>
-      </ul>
-      <p class="project__links">
-        <a href="https://github.com/D-SreeVardhan/multiligual-indic-voice-tutor" rel="noopener">Source &rarr;</a>
-      </p>
-    </article>
-
-    <!-- ---- Project 03 ---- -->
-    <article class="project reveal">
-      <div class="project__head">
-        <p class="project__num">03</p>
-        <div>
-          <h3 class="project__title">Legal Document Classifier</h3>
-          <p class="project__sub">Retrieval-grounded document intelligence</p>
-        </div>
-        <p class="project__period">Mar 2026 &ndash; Apr 2026</p>
-      </div>
-
-      <figure class="motif" aria-hidden="true">
-        <svg viewBox="0 0 220 90" role="presentation" focusable="false">
-          <g class="motif__rules">
-            <path d="M30 20 H150 M30 32 H168 M30 44 H140"/>
-            <path d="M30 56 H162" class="is-cited"/>
-            <path d="M30 68 H132 M30 80 H155"/>
-          </g>
-          <g class="motif__nodes"><circle cx="186" cy="56" r="5" class="is-cited-dot"/></g>
-        </svg>
-        <figcaption class="motif__cap">Every answer points back at the clause it came from</figcaption>
-      </figure>
-
-      <p>
-        A two-person build where I owned the retrieval layer. Classification alone tells a lawyer
-        what a document <em>is</em>; it does not tell them why the model thinks so. So every
-        generated answer here comes back with the clauses it was grounded in and their relevance
-        scores, which makes a prediction something you can check rather than something you have
-        to trust.
-      </p>
-
-      <ol class="steps">
-        <li>
-          <strong>Chunking that respects clauses.</strong> Paragraphs are windowed with deliberate
-          word overlap, so a clause straddling a boundary is never lost from both halves &mdash;
-          the failure mode that quietly wrecks naive chunking.
-        </li>
-        <li>
-          <strong>Dense ranking with a sparse safety net.</strong> MiniLM sentence embeddings
-          ranked by cosine similarity, falling back to TF&#8209;IDF so the system keeps answering
-          when the embedding model is unavailable.
-        </li>
-        <li>
-          <strong>No vector database, on purpose.</strong> The corpus is one uploaded document.
-          Exact search over a few hundred chunks is a single matrix multiply; a vector store would
-          add a dependency, a persistence story, and index staleness for no measurable gain. That
-          calculus flips the moment the corpus outgrows memory.
-        </li>
-        <li>
-          <strong>Classification.</strong> Legal&#8209;BERT fine-tuned across 10+ document
-          categories, with the label mapping persisted beside the checkpoint so inference
-          reproduces training classes exactly, and a BiLSTM baseline kept for comparison.
-        </li>
-      </ol>
-
-      <dl class="metrics">
-        <div><dt>Held-out F1</dt><dd>0.89</dd></div>
-        <div><dt>Categories</dt><dd>10+</dd></div>
-        <div><dt>Team size</dt><dd>2</dd></div>
-      </dl>
-
-      <ul class="stack">
-        <li>Legal-BERT</li><li>Sentence-Transformers</li><li>scikit-learn</li><li>Flask</li>
-      </ul>
-      <p class="project__links">
-        <a href="https://github.com/Pranav-Nayak-123/legal-classifier-genai" rel="noopener">Source &rarr;</a>
-      </p>
-    </article>
-
-  </div>
-</section>
-
-<!-- ============ Research ============ -->
-<section id="research" class="section" aria-labelledby="research-h">
-  <div class="section__label"><h2 id="research-h">Research</h2></div>
-  <div class="section__body">
-    <article class="paper reveal">
-      <p class="paper__venue">IEEE CONECCT 2026 &middot; <span>Accepted, in publication</span></p>
-      <h3 class="paper__title">
-        Molecular Generation for Drug Discovery: A Lightweight GRU-Based Approach for
-        Property-Guided Drug Discovery
-      </h3>
-      <p class="paper__meta">
-        12th IEEE International Conference on Electronics, Computing &amp; Communication
-        Technologies &middot; May 2026
-      </p>
-      <p>
-        A parameter-efficient GRU generator over SMILES, conditioned on QED, LogP, and molecular
-        weight. The argument is that property-guided molecular generation does not require
-        large-scale compute &mdash; a small recurrent model, conditioned well, gets you a usable
-        baseline. That baseline is what SafeMolGen is measured against.
-      </p>
-    </article>
-  </div>
-</section>
-
-<!-- ============ Approach ============ -->
-<section id="approach" class="section" aria-labelledby="approach-h">
-  <div class="section__label"><h2 id="approach-h">Approach</h2></div>
-  <div class="section__body">
-    <div class="prose reveal">
-      <p class="pull">
-        I care about the line between what a model learned and what I hand-wrote.
-      </p>
-      <p>
-        Most of my systems are part learned and part policy. SafeMolGen&rsquo;s clinical quality
-        score is a weighted sum with safety penalties I chose &mdash; not a learned head &mdash;
-        and I keep that written down, because a heuristic dressed up as a model is how teams end up
-        trusting a number nobody validated.
-      </p>
-      <p>
-        The corollary is that I read my own evaluations even when they disagree with the story I
-        wanted to tell. Several ADMET endpoints in SafeMolGen sit near chance, because the splits
-        are small and scaffold-split and training was CPU-bound. That is worth knowing and saying
-        out loud. A negative result I can explain is more useful than a number I can&rsquo;t source.
-      </p>
-      <p>
-        And I finish things. Each project here is a running service with tests and CI, not a
-        notebook &mdash; because the interesting failures only show up once something is deployed
-        and a person is waiting on it.
-      </p>
+      <nav class="aside__nav" aria-label="Sections">
+        <ol>
+          <li><a href="#about" data-nav>About</a></li>
+          <li><a href="#work" data-nav>Work</a></li>
+          <li><a href="#research" data-nav>Research</a></li>
+          <li><a href="#toolkit" data-nav>Toolkit</a></li>
+        </ol>
+      </nav>
     </div>
-  </div>
-</section>
+    <ul class="aside__links">
+      <li><a href="mailto:dsreevardhan22@gmail.com">Email</a></li>
+      <li><a href="https://github.com/D-SreeVardhan" rel="me noopener">GitHub</a></li>
+      <li><a href="https://linkedin.com/in/sree-vardhan-desu" rel="me noopener">LinkedIn</a></li>
+      <li><a href="resume.pdf">Résumé</a></li>
+    </ul>
+  </aside>
 
-<!-- ============ Toolkit ============ -->
-<section id="toolkit" class="section" aria-labelledby="toolkit-h">
-  <div class="section__label"><h2 id="toolkit-h">Toolkit</h2></div>
-  <div class="section__body">
-    <dl class="toolkit reveal">
-      <div>
-        <dt>Modelling</dt>
-        <dd>PyTorch, PyTorch Geometric, Hugging Face Transformers, scikit-learn, TensorFlow</dd>
-      </div>
-      <div>
-        <dt>Generative AI &amp; NLP</dt>
-        <dd>Retrieval pipelines and RAG, BERT and Legal-BERT, sentence embeddings, sequence
-            models, RL fine-tuning (REINFORCE, PPO), prompt design</dd>
-      </div>
-      <div>
-        <dt>Backend &amp; delivery</dt>
-        <dd>FastAPI, Flask, REST, Server-Sent Events, GitHub Actions CI, pytest, Ruff, Docker, Git</dd>
-      </div>
-      <div>
-        <dt>Data &amp; scientific</dt>
-        <dd>Pandas, NumPy, RDKit, dataset curation, evaluation harnesses</dd>
-      </div>
-      <div>
-        <dt>Languages</dt>
-        <dd>Python, SQL, C; TypeScript and React to working depth</dd>
-      </div>
-      <div>
-        <dt>Electronics</dt>
-        <dd>Arduino, ESP32, Raspberry Pi, I2C, embedded C, KiCad PCB design, Multisim, lab
-            instrumentation &mdash; from a diploma in Electronics &amp; Communication</dd>
-      </div>
-    </dl>
+  <main id="content" class="content">
 
-    <div class="education reveal">
-      <h3 class="education__h">Education</h3>
-      <p>
-        <strong>B.Tech, Computer Science &amp; Engineering (AI&nbsp;&amp;&nbsp;ML)</strong><br>
-        RV University, Bengaluru &middot; 2024&ndash;2027 &middot; CGPA 7.73/10
-      </p>
-      <p>
-        <strong>Diploma, Electronics &amp; Communication Engineering</strong><br>
-        PES Polytechnic, Bengaluru &middot; 2021&ndash;2024 &middot; CGPA 9.47/10
-      </p>
-    </div>
-  </div>
-</section>
+    <!-- ============ About ============ -->
+    <section id="about" class="block" aria-labelledby="about-h">
+      <h2 id="about-h" class="block__h">About</h2>
+      <div class="block__body prose">
+        <p>
+          Final-year AI&nbsp;&amp;&nbsp;ML undergraduate at
+          <strong>RV&nbsp;University</strong> and an
+          <a href="#research">IEEE&nbsp;CONECCT&nbsp;2026</a> author. I like owning
+          a problem end-to-end — from the model through a tested, deployed service —
+          and I keep a clear line between what a model learned and what I hand-wrote.
+        </p>
+        <p>
+          Most of my systems are part learned and part policy. SafeMolGen’s clinical
+          quality score is a weighted sum with safety penalties I chose, not a learned
+          head, and I write that down. A negative result I can explain is more useful
+          than a number I can’t source.
+        </p>
+        <p>
+          Open to AI/ML engineering roles and internships. The fastest way to reach me
+          is <a href="mailto:dsreevardhan22@gmail.com">email</a>.
+        </p>
+      </div>
+    </section>
 
-<!-- ============ Contact ============ -->
-<section id="contact" class="section section--last" aria-labelledby="contact-h">
-  <div class="section__label"><h2 id="contact-h">Contact</h2></div>
-  <div class="section__body">
-    <div class="contact reveal">
-      <p class="contact__lede">
-        Open to AI/ML engineering roles and internships. The fastest way to reach me is email.
-      </p>
-      <ul class="contact__list">
-        <li><span>Email</span><a href="mailto:dsreevardhan22@gmail.com">dsreevardhan22@gmail.com</a></li>
-        <li><span>Phone</span><a href="tel:+918123193999">+91 81231 93999</a></li>
-        <li><span>GitHub</span><a href="https://github.com/D-SreeVardhan" rel="me noopener">D-SreeVardhan</a></li>
-        <li><span>LinkedIn</span><a href="https://linkedin.com/in/sree-vardhan-desu" rel="me noopener">sree-vardhan-desu</a></li>
-        <li><span>Résumé</span><a href="resume.pdf">Download PDF</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <!-- ============ Work ============ -->
+    <section id="work" class="block" aria-labelledby="work-h">
+      <h2 id="work-h" class="block__h">Selected work</h2>
+      <div class="block__body">
 
-</main>
+        <!-- Project 01 -->
+        <article class="case" id="safemolgen">
+          <header class="case__head">
+            <p class="case__num">01</p>
+            <div>
+              <h3 class="case__title">
+                <a href="https://github.com/D-SreeVardhan/SafeMolGen" rel="noopener">
+                  SafeMolGen-DrugOracle
+                </a>
+              </h3>
+              <p class="case__sub">Closed-loop drug-discovery pipeline</p>
+            </div>
+            <p class="case__when">Dec 2025 – Present</p>
+          </header>
 
-<footer class="footer">
-  <p>Bengaluru, India</p>
-  <p>Set in EB Garamond. Built as plain HTML and CSS.</p>
-</footer>
+          <p class="case__outcome">
+            Base generator reached <strong>68.8% chemical validity</strong> and
+            <strong>100% uniqueness</strong> on 2.85M ChEMBL molecules; RL refinement
+            lifted mean clinical quality from 4.8% to 35.9% — about a
+            <strong>7.5×</strong> improvement over the published GRU baseline.
+          </p>
+
+          <dl class="stats">
+            <div><dt>Validity</dt><dd>68.8<span>%</span></dd></div>
+            <div><dt>Uniqueness</dt><dd>100<span>%</span></dd></div>
+            <div><dt>Corpus</dt><dd>2.85<span>M</span></dd></div>
+            <div><dt>ADMET ends</dt><dd>22</dd></div>
+          </dl>
+
+          <ol class="flow">
+            <li>
+              <strong>Predict.</strong> A 3-layer Graph Isomorphism Network with
+              attention pooling jointly predicts 22 ADMET endpoints from the
+              Therapeutics Data Commons benchmark.
+            </li>
+            <li>
+              <strong>Judge.</strong> Cascaded Phase I/II/III heads — each consumes
+              the previous — plus a SMARTS filter for PAINS and known toxicophores.
+            </li>
+            <li>
+              <strong>Generate.</strong> Causal Transformer over a regex SMILES
+              tokenizer, conditioned on a 25-dimensional ADMET-plus-phase vector.
+            </li>
+            <li>
+              <strong>Refine.</strong> REINFORCE and PPO under a validity-gated
+              composite reward of validity, drug-likeness, oracle score, and diversity.
+            </li>
+          </ol>
+
+          <p class="case__note">
+            <strong>What I learned.</strong> The oracle’s reward contribution was an
+            order of magnitude smaller than the validity term. Scaling it up collapsed
+            validity to zero — the policy drifted off the manifold of valid chemistry.
+            The fix is a curriculum on the oracle weight plus a divergence penalty
+            against the pretrained policy: the same shape as RLHF.
+          </p>
+
+          <ul class="tags">
+            <li>PyTorch</li><li>PyTorch Geometric</li><li>Transformers</li>
+            <li>RDKit</li><li>FastAPI</li><li>React</li>
+          </ul>
+          <p class="case__link">
+            <a href="https://github.com/D-SreeVardhan/SafeMolGen" rel="noopener">Source →</a>
+          </p>
+        </article>
+
+        <!-- Project 02 -->
+        <article class="case" id="voice">
+          <header class="case__head">
+            <p class="case__num">02</p>
+            <div>
+              <h3 class="case__title">
+                <a href="https://github.com/D-SreeVardhan/multiligual-indic-voice-tutor" rel="noopener">
+                  Multilingual Voice Chatbot
+                </a>
+              </h3>
+              <p class="case__sub">Cross-lingual speech-to-speech across five languages</p>
+            </div>
+            <p class="case__when">Dec 2025 – Apr 2026</p>
+          </header>
+
+          <p class="case__outcome">
+            One English-pivot answering stage serves all
+            <strong>25 input–output language pairs</strong> across Hindi, Tamil,
+            Telugu, Kannada, and English, reaching roughly
+            <strong>82% answer relevance</strong> on a 200-query development set.
+          </p>
+
+          <dl class="stats">
+            <div><dt>Languages</dt><dd>5</dd></div>
+            <div><dt>Pairs</dt><dd>25</dd></div>
+            <div><dt>Relevance</dt><dd>~82<span>%</span></dd></div>
+            <div><dt>Dev queries</dt><dd>200</dd></div>
+          </dl>
+
+          <ol class="flow">
+            <li>
+              <strong>One mapping for language.</strong> Recognition wants ISO,
+              translation wants FLORES, TTS is per-language — all three read from a
+              single table, so a sixth language is one config entry.
+            </li>
+            <li>
+              <strong>Memory in the pivot.</strong> History is stored in English, so
+              context survives when a follow-up arrives in a different language.
+            </li>
+            <li>
+              <strong>Voices chosen for the language.</strong> Indic Parler-TTS for
+              Indic pronunciation; Coqui VITS for English.
+            </li>
+            <li>
+              <strong>Built for a live demo.</strong> Process-level model cache,
+              stage-by-stage streaming, and explicit offline fallbacks.
+            </li>
+          </ol>
+
+          <p class="case__note">
+            <strong>The trade-off.</strong> Pivoting twice compounds translation error,
+            and code-mixed speech — how people actually talk in Bengaluru — is the
+            hardest input for both the recogniser and the translator. The honest
+            boundary is monolingual utterances.
+          </p>
+
+          <ul class="tags">
+            <li>Whisper</li><li>NLLB-200</li><li>Hugging Face</li>
+            <li>fastText</li><li>Flask</li><li>SSE</li>
+          </ul>
+          <p class="case__link">
+            <a href="https://github.com/D-SreeVardhan/multiligual-indic-voice-tutor" rel="noopener">Source →</a>
+          </p>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="case" id="legal">
+          <header class="case__head">
+            <p class="case__num">03</p>
+            <div>
+              <h3 class="case__title">
+                <a href="https://github.com/Pranav-Nayak-123/legal-classifier-genai" rel="noopener">
+                  Legal Document Classifier
+                </a>
+              </h3>
+              <p class="case__sub">Retrieval-grounded document intelligence</p>
+            </div>
+            <p class="case__when">Mar 2026 – Apr 2026</p>
+          </header>
+
+          <p class="case__outcome">
+            Owned the retrieval layer of a two-person build. Legal-BERT fine-tuned
+            across 10+ categories reached an <strong>F1 of 0.89</strong>; every answer
+            returns the clauses and scores it was grounded on.
+          </p>
+
+          <dl class="stats">
+            <div><dt>Held-out F1</dt><dd>0.89</dd></div>
+            <div><dt>Categories</dt><dd>10+</dd></div>
+            <div><dt>Team</dt><dd>2</dd></div>
+          </dl>
+
+          <ol class="flow">
+            <li>
+              <strong>Chunking that respects clauses.</strong> Paragraphs windowed
+              with deliberate overlap so a clause on a boundary is never lost from
+              both halves.
+            </li>
+            <li>
+              <strong>Dense ranking, sparse safety net.</strong> MiniLM embeddings by
+              cosine similarity, falling back to TF-IDF when the embedding model is
+              unavailable.
+            </li>
+            <li>
+              <strong>No vector database, on purpose.</strong> One uploaded document
+              is a few hundred chunks — exact search is a matrix multiply. A vector
+              store would add persistence and staleness for no gain.
+            </li>
+            <li>
+              <strong>Classification.</strong> Legal-BERT with the label mapping
+              persisted beside the checkpoint, plus a BiLSTM baseline for comparison.
+            </li>
+          </ol>
+
+          <ul class="tags">
+            <li>Legal-BERT</li><li>Sentence-Transformers</li>
+            <li>scikit-learn</li><li>Flask</li>
+          </ul>
+          <p class="case__link">
+            <a href="https://github.com/Pranav-Nayak-123/legal-classifier-genai" rel="noopener">Source →</a>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ Research ============ -->
+    <section id="research" class="block" aria-labelledby="research-h">
+      <h2 id="research-h" class="block__h">Research</h2>
+      <div class="block__body">
+        <article class="paper">
+          <p class="paper__venue">IEEE CONECCT 2026 · <span>Accepted, in publication</span></p>
+          <h3 class="paper__title">
+            Molecular Generation for Drug Discovery: A Lightweight GRU-Based Approach
+            for Property-Guided Drug Discovery
+          </h3>
+          <p class="paper__meta">
+            12th IEEE International Conference on Electronics, Computing &amp;
+            Communication Technologies · May 2026
+          </p>
+          <p>
+            A parameter-efficient GRU generator over SMILES, conditioned on QED, LogP,
+            and molecular weight. The argument: property-guided molecular generation
+            does not require large-scale compute. That baseline is what SafeMolGen is
+            measured against.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Toolkit ============ -->
+    <section id="toolkit" class="block" aria-labelledby="toolkit-h">
+      <h2 id="toolkit-h" class="block__h">Toolkit</h2>
+      <div class="block__body">
+        <dl class="kit">
+          <div>
+            <dt>Modelling</dt>
+            <dd>PyTorch, PyTorch Geometric, Hugging Face Transformers, scikit-learn, TensorFlow</dd>
+          </div>
+          <div>
+            <dt>GenAI &amp; NLP</dt>
+            <dd>RAG and retrieval, BERT / Legal-BERT, sentence embeddings, RL fine-tuning (REINFORCE, PPO)</dd>
+          </div>
+          <div>
+            <dt>Backend</dt>
+            <dd>FastAPI, Flask, REST, Server-Sent Events, GitHub Actions CI, pytest, Ruff, Docker</dd>
+          </div>
+          <div>
+            <dt>Languages</dt>
+            <dd>Python, SQL, C · TypeScript and React to working depth</dd>
+          </div>
+          <div>
+            <dt>Electronics</dt>
+            <dd>Arduino, ESP32, Raspberry Pi, I2C, embedded C, KiCad — from a diploma in ECE</dd>
+          </div>
+        </dl>
+
+        <div class="edu">
+          <p>
+            <strong>B.Tech, CSE (AI&nbsp;&amp;&nbsp;ML)</strong> —
+            RV University, Bengaluru · 2024–2027 · CGPA 7.73/10
+          </p>
+          <p>
+            <strong>Diploma, Electronics &amp; Communication</strong> —
+            PES Polytechnic, Bengaluru · 2021–2024 · CGPA 9.47/10
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>Bengaluru, India</p>
+      <p>Set in EB Garamond · Built as plain HTML and CSS</p>
+    </footer>
+
+  </main>
+</div>
 
 <script src="main.js" defer></script>
 </body>
