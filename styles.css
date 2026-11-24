@@ -26,6 +26,7 @@
   --step-4:  clamp(2.35rem, 1.5rem  + 4.2vw,  5.6rem);
 
   --measure: 34rem;
+  --column: 56rem;   /* label + gap + 44rem reading measure */
   --gutter: clamp(1.25rem, 4vw, 4rem);
 }
 
@@ -140,7 +141,8 @@ main { padding: 0 var(--gutter); }
 /* ------------------------------------------------------------ masthead --- */
 .masthead {
   padding: clamp(3.5rem, 11vh, 9rem) 0 clamp(2.5rem, 7vh, 5rem);
-  max-width: 52rem;
+  max-width: var(--column);
+  margin-inline: auto;
 }
 
 .eyebrow {
@@ -187,6 +189,8 @@ main { padding: 0 var(--gutter); }
 .section {
   border-top: 1px solid var(--rule);
   padding: clamp(2.5rem, 6vh, 4.5rem) 0;
+  max-width: var(--column);
+  margin-inline: auto;
 }
 .section--last { padding-bottom: clamp(3rem, 8vh, 6rem); }
 
@@ -466,6 +470,8 @@ main { padding: 0 var(--gutter); }
 .footer {
   border-top: 1px solid var(--rule);
   padding: 1.6rem var(--gutter) 2.4rem;
+  max-width: calc(var(--column) + 2 * var(--gutter));
+  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
