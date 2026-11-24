@@ -25,9 +25,12 @@
   --step-2:  clamp(1.5rem,  1.3rem  + 0.95vw, 2.1rem);
   --step-4:  clamp(2.35rem, 1.5rem  + 4.2vw,  5.6rem);
 
-  --measure: 34rem;
-  --column: 56rem;   /* label + gap + 44rem reading measure */
-  --gutter: clamp(1.25rem, 4vw, 4rem);
+  /* Paragraphs stay near a comfortable reading measure (~65–75 chars).
+     The page frame fills the main area so headers, metrics, and diagrams
+     use the desktop width instead of leaving a dead column on the right. */
+  --measure: 38rem;
+  --column: 100%;
+  --gutter: clamp(1.25rem, 3vw, 3rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -142,7 +145,6 @@ main { padding: 0 var(--gutter); }
 .masthead {
   padding: clamp(3.5rem, 11vh, 9rem) 0 clamp(2.5rem, 7vh, 5rem);
   max-width: var(--column);
-  margin-inline: auto;
 }
 
 .eyebrow {
@@ -166,7 +168,7 @@ main { padding: 0 var(--gutter); }
 .lede {
   font-size: var(--step-1);
   line-height: 1.5;
-  max-width: 36rem;
+  max-width: var(--measure);
   color: var(--ink);
 }
 .lede em { font-style: italic; }
@@ -190,7 +192,6 @@ main { padding: 0 var(--gutter); }
   border-top: 1px solid var(--rule);
   padding: clamp(2.5rem, 6vh, 4.5rem) 0;
   max-width: var(--column);
-  margin-inline: auto;
 }
 .section--last { padding-bottom: clamp(3rem, 8vh, 6rem); }
 
@@ -206,13 +207,20 @@ main { padding: 0 var(--gutter); }
 @media (min-width: 48rem) {
   .section {
     display: grid;
-    grid-template-columns: 8rem minmax(0, 1fr);
-    gap: 0 clamp(1.5rem, 4vw, 3.5rem);
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 0 clamp(1.5rem, 3vw, 2.5rem);
   }
   .section__label { position: sticky; top: var(--gutter); align-self: start; }
 }
 
-.section__body { max-width: 44rem; }
+/* Body fills the grid cell. Paragraph text is capped separately via --measure
+   so line length stays readable while metrics, steps, and headers use the width. */
+.section__body { max-width: none; }
+.project > p,
+.paper > p,
+.prose > p {
+  max-width: var(--measure);
+}
 
 /* -------------------------------------------------------------- project --- */
 .project + .project {
@@ -266,7 +274,7 @@ main { padding: 0 var(--gutter); }
 .motif svg {
   display: block;
   width: 100%;
-  max-width: 24rem;
+  max-width: 32rem;
   height: auto;
   overflow: visible;
 }
@@ -304,6 +312,7 @@ main { padding: 0 var(--gutter); }
   counter-reset: step;
   margin: 1.6rem 0;
   padding: 0;
+  max-width: 48rem;
 }
 .steps li {
   counter-increment: step;
@@ -445,7 +454,7 @@ main { padding: 0 var(--gutter); }
 .education strong { color: var(--ink); font-size: var(--step-0); }
 
 /* -------------------------------------------------------------- contact --- */
-.contact__lede { font-size: var(--step-1); max-width: 28rem; margin-bottom: 1.8rem; }
+.contact__lede { font-size: var(--step-1); max-width: var(--measure); margin-bottom: 1.8rem; }
 .contact__list { list-style: none; margin: 0; padding: 0; }
 .contact__list li {
   display: grid;
@@ -470,8 +479,6 @@ main { padding: 0 var(--gutter); }
 .footer {
   border-top: 1px solid var(--rule);
   padding: 1.6rem var(--gutter) 2.4rem;
-  max-width: calc(var(--column) + 2 * var(--gutter));
-  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
